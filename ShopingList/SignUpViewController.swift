@@ -47,11 +47,9 @@ class SignUpViewController: UIViewController {
             
             FUser.registerUserWith(email: emailTextField.text!, password: passwordTextField.text!, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!) { (error) in
                 
-                KRProgressHUD.dismiss()
-                
                 if error != nil {
                     
-                    print("error registering \(error!.localizedDescription)")
+                    KRProgressHUD.showText(message: error!.localizedDescription)
                     return
                 }
                 

@@ -104,6 +104,13 @@ class FUser {
         
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (firuser, error) in
             
+            if error != nil {
+                
+                completion(error)
+                return
+            }
+            
+            
             let fUser = FUser(_objectId: firuser!.uid, _createdAt: Date(), _email: firuser!.email!, _firstname: firstName, _lastname: lastName)
             
             saveUserLocally(fUser: fUser)
