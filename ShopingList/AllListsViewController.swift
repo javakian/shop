@@ -17,6 +17,7 @@ class AllListsViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var tableView: UITableView!
     var nameTextField: UITextField!
     
+    
     var defaultOptions = SwipeTableOptions()
     var isSwipeRightEnabled = false
 
