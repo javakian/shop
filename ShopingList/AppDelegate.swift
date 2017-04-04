@@ -7,15 +7,40 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var firstLoad: Bool?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        FIRApp.configure()
+        FIRDatabase.database().persistenceEnabled = true
+        
+        UINavigationBar.appearance().barTintColor = #colorLiteral(red: 0.1987636381, green: 0.7771705055, blue: 1, alpha: 1)
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
+
+        loadUserDefaults()
+        
+        FIRAuth.auth()?.addStateDidChangeListener { auth, user in
+            
+            if user != nil {
+                
+                if userDefaults.object(forKey: kCURRENTUSER) != nil {
+                    
+                    self.goToApp()
+                    
+                }
+                
+            }
+        }
+
+        
         return true
     }
 
@@ -40,7 +65,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    
+    func loadUserDefaults() {
+        firstLoad = userDefaults.bool(forKey: kFIRSTRUN)
+        
+        if !firstLoad! {
+            
+            userDefaults.set(true, forKey: kFIRSTRUN)
+            
+            userDefaults.set("€", forKey: kCURRENCY)
+            userDefaults.synchronize()
+            
+        }
+    }
 
+    func goToApp() {
+        
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainView") as! UITabBarController
+        
+        vc.selectedIndex = 0
+
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = vc
+        self.window?.makeKeyAndVisible()
+        
+    }
 
 }
 
