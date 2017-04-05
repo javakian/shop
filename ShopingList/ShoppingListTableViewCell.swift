@@ -14,6 +14,7 @@ class ShoppingListTableViewCell: SwipeTableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var totalItemsLabel: UILabel!
     @IBOutlet weak var totalPriceLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     
     override func awakeFromNib() {
@@ -30,11 +31,15 @@ class ShoppingListTableViewCell: SwipeTableViewCell {
     func bindData(item: ShoppingList) {
         
         let currency = userDefaults.value(forKey: kCURRENCY) as! String
+        let currentDateFormater = dateFormatter()
+        currentDateFormater.dateFormat = "dd/MM/YYYY"
+        
+        let date = currentDateFormater.string(from: item.date)
         
         self.nameLabel.text = item.name
         self.totalItemsLabel.text = "\(item.totalItems) Items"
         self.totalPriceLabel.text = "Total \(currency) \(String(format: "%.2f", item.totalPrice))"
-        
+        self.dateLabel.text = date
         self.totalPriceLabel.sizeToFit()
         self.nameLabel.sizeToFit()
 
