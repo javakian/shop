@@ -172,7 +172,7 @@ class AddShoppingItemViewController: UIViewController, UINavigationControllerDel
                 
                 if error != nil {
                     
-                    KRProgressHUD.showError(message: "Error saving shopping item to list \(error!.localizedDescription)")
+                    KRProgressHUD.showWarning(message: "\(error!.localizedDescription)")
 
                     return
                 }
@@ -194,7 +194,7 @@ class AddShoppingItemViewController: UIViewController, UINavigationControllerDel
                 
                 if error != nil {
                     
-                    KRProgressHUD.showError(message: "Error adding shopping item \(error!.localizedDescription)")
+                    KRProgressHUD.showWarning(message: "\(error!.localizedDescription)")
 
                     return
                 }
@@ -265,7 +265,7 @@ class AddShoppingItemViewController: UIViewController, UINavigationControllerDel
                 
                 if error != nil {
                     
-                    KRProgressHUD.showError(message: "Error saving shopping item \(error!.localizedDescription)")
+                    KRProgressHUD.showWarning(message: "\(error!.localizedDescription)")
 
                     return
                 }
@@ -284,7 +284,7 @@ class AddShoppingItemViewController: UIViewController, UINavigationControllerDel
                 
                 if error != nil {
                     
-                    KRProgressHUD.showError(message: "Error updating grocery item \(error!.localizedDescription)")
+                    KRProgressHUD.showWarning(message: "\(error!.localizedDescription)")
 
                     return
                 }

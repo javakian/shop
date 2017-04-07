@@ -214,7 +214,7 @@ class AllListsViewController: UIViewController, UITableViewDelegate, UITableView
             
             if error != nil {
                 
-                KRProgressHUD.showError(message: "Error creating shopping list \(error!.localizedDescription)")
+                KRProgressHUD.showWarning(message: "\(error!.localizedDescription)")
                 return
             }
             

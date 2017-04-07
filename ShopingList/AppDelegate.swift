@@ -21,9 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         FIRDatabase.database().persistenceEnabled = true
         
-        UINavigationBar.appearance().barTintColor = #colorLiteral(red: 0.1987636381, green: 0.7771705055, blue: 1, alpha: 1)
-        UINavigationBar.appearance().tintColor = UIColor.white
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
+        setNavBar()
 
         loadUserDefaults()
         
@@ -88,6 +86,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = vc
         self.window?.makeKeyAndVisible()
         
+    }
+    
+    func setNavBar() {
+        
+        UINavigationBar.appearance().barTintColor = #colorLiteral(red: 0.1987636381, green: 0.7771705055, blue: 1, alpha: 1)
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
+
     }
 
 }

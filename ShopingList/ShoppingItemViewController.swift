@@ -279,7 +279,7 @@ class ShoppingItemViewController: UIViewController, UITableViewDelegate, UITable
                     
                     if error != nil {
                         
-                        KRProgressHUD.showError(message: "Error couldnt update \(error!.localizedDescription)")
+                        KRProgressHUD.showWarning(message: "\(error!.localizedDescription)")
 
                         return
                     }
@@ -384,7 +384,7 @@ class ShoppingItemViewController: UIViewController, UITableViewDelegate, UITable
             
             if error != nil {
                 
-                KRProgressHUD.showError(message: "Error updateing shopping list price \(error!.localizedDescription)")
+                KRProgressHUD.showWarning(message: "\(error!.localizedDescription)")
 
                 return
             }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aNL-YW-YPA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aNL-YW-YPA">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -696,13 +696,6 @@
                                     <constraint firstItem="eXt-gZ-t4Y" firstAttribute="leading" secondItem="j1z-Nr-T5o" secondAttribute="leading" constant="8" id="zVZ-66-JWK"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBU-rs-1kU">
-                                <rect key="frame" x="24" y="318" width="327" height="30"/>
-                                <state key="normal" title="Sign Out"/>
-                                <connections>
-                                    <action selector="signOutButtonPressed:" destination="IXT-Fw-yih" eventType="touchUpInside" id="RN6-Bd-pl2"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Usa-tt-ipz">
                                 <rect key="frame" x="16" y="102" width="78" height="21"/>
                                 <constraints>
@@ -713,24 +706,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBU-rs-1kU">
+                                <rect key="frame" x="16" y="318.5" width="343" height="30"/>
+                                <state key="normal" title="Sign Out"/>
+                                <connections>
+                                    <action selector="signOutButtonPressed:" destination="IXT-Fw-yih" eventType="touchUpInside" id="RN6-Bd-pl2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Usa-tt-ipz" firstAttribute="leading" secondItem="i6t-Nt-YhN" secondAttribute="leadingMargin" id="34B-oQ-VxN"/>
                             <constraint firstItem="Ff0-VF-G0C" firstAttribute="leading" secondItem="Usa-tt-ipz" secondAttribute="trailing" constant="8" id="41P-CK-PXM"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="fBU-rs-1kU" secondAttribute="trailing" constant="8" id="69v-II-Ciz"/>
                             <constraint firstItem="Ff0-VF-G0C" firstAttribute="trailing" secondItem="i6t-Nt-YhN" secondAttribute="trailingMargin" id="74I-qz-lrR"/>
                             <constraint firstItem="Usa-tt-ipz" firstAttribute="top" secondItem="j1z-Nr-T5o" secondAttribute="bottom" constant="38" id="8Se-MU-cr9"/>
+                            <constraint firstItem="fBU-rs-1kU" firstAttribute="trailing" secondItem="i6t-Nt-YhN" secondAttribute="trailingMargin" id="9hg-UD-Lat"/>
                             <constraint firstItem="j1z-Nr-T5o" firstAttribute="top" secondItem="i6t-Nt-YhN" secondAttribute="top" id="AiZ-PA-CRk"/>
                             <constraint firstItem="Ff0-VF-G0C" firstAttribute="top" secondItem="j1z-Nr-T5o" secondAttribute="bottom" constant="35" id="HUx-kN-juv"/>
                             <constraint firstAttribute="trailing" secondItem="zBj-Lk-3ge" secondAttribute="trailing" id="KMq-cq-0r8"/>
                             <constraint firstItem="n4x-aG-JCf" firstAttribute="top" secondItem="zBj-Lk-3ge" secondAttribute="bottom" id="QKG-zO-0CI"/>
-                            <constraint firstItem="fBU-rs-1kU" firstAttribute="leading" secondItem="i6t-Nt-YhN" secondAttribute="leadingMargin" constant="8" id="XMO-f7-bcu"/>
-                            <constraint firstItem="fBU-rs-1kU" firstAttribute="leading" secondItem="zBj-Lk-3ge" secondAttribute="trailing" constant="-351" id="b2o-OW-Lfe"/>
                             <constraint firstItem="zBj-Lk-3ge" firstAttribute="top" secondItem="j1z-Nr-T5o" secondAttribute="bottom" id="bYa-t9-fMq"/>
-                            <constraint firstItem="zBj-Lk-3ge" firstAttribute="top" secondItem="fBU-rs-1kU" secondAttribute="bottom" constant="-284" id="bqP-qg-Wuf"/>
+                            <constraint firstItem="fBU-rs-1kU" firstAttribute="centerX" secondItem="i6t-Nt-YhN" secondAttribute="centerX" id="edm-2V-uJt"/>
                             <constraint firstAttribute="trailing" secondItem="j1z-Nr-T5o" secondAttribute="trailing" id="jNK-W6-DY0"/>
                             <constraint firstItem="j1z-Nr-T5o" firstAttribute="leading" secondItem="i6t-Nt-YhN" secondAttribute="leading" id="qGG-3h-MAZ"/>
+                            <constraint firstItem="fBU-rs-1kU" firstAttribute="leading" secondItem="i6t-Nt-YhN" secondAttribute="leadingMargin" id="u8n-gv-5lp"/>
+                            <constraint firstItem="fBU-rs-1kU" firstAttribute="centerY" secondItem="i6t-Nt-YhN" secondAttribute="centerY" id="xCJ-71-HXc"/>
                             <constraint firstItem="zBj-Lk-3ge" firstAttribute="leading" secondItem="i6t-Nt-YhN" secondAttribute="leading" id="xEW-yO-y1T"/>
                         </constraints>
                     </view>

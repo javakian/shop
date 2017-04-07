@@ -49,7 +49,7 @@ class SignUpViewController: UIViewController {
                 
                 if error != nil {
                     
-                    KRProgressHUD.showText(message: error!.localizedDescription)
+                    KRProgressHUD.showWarning(message: error!.localizedDescription)
                     return
                 }
                 

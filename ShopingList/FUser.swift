@@ -220,7 +220,7 @@ func resetUserPassword(email: String) {
         
         if error != nil {
             
-            KRProgressHUD.showError(message: "Error reseting password \(error!.localizedDescription)")
+            KRProgressHUD.showWarning(message: "\(error!.localizedDescription)")
 
         } else {
             

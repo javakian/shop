@@ -21,13 +21,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var signInButtonOutlet: UIButton!
     @IBOutlet weak var signUpButtonOutlet: UIButton!
     
-    
-    override func viewDidAppear(_ animated: Bool) {
-
-            
-    }
-
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,7 +49,7 @@ class LoginViewController: UIViewController {
                 
                 if error != nil {
                     
-                    KRProgressHUD.showError(message: "Error loging in \(error!.localizedDescription)")
+                    KRProgressHUD.showError(message: "\(error!.localizedDescription)")
 
                     return
                 }

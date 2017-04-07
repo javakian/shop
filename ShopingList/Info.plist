@@ -38,5 +38,7 @@
 	<string>$(EXECUTABLE_NAME) would like to use your camera</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(EXECUTABLE_NAME) would like to access your photo library</string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<string>NO</string>
 </dict>
 </plist>
