@@ -38,14 +38,16 @@ class GroceryTableViewCell: ItemTableViewCell {
         if item.image != "" {
             
             imageFromData(pictureData: item.image) { (image) in
-                self.itemImage.image = maskRoundedImage(image: image!, radius: Float(image!.size.width/2))
-                
+
+                let newImage = image!.scaleImageToSize(newSize: itemImage.frame.size)
+                self.itemImage.image = newImage.circleMasked
+
             }
             
         } else {
-            let image = UIImage(named: "ShoppingCartEmpty")
-
-            self.itemImage.image = maskRoundedImage(image: image!, radius: Float(image!.size.width/2))
+            
+            let image = UIImage(named: "ShoppingCartEmpty")!.scaleImageToSize(newSize: itemImage.frame.size)
+            self.itemImage.image = image.circleMasked
             
         }
         

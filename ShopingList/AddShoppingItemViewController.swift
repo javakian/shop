@@ -11,6 +11,7 @@ import KRProgressHUD
 
 class AddShoppingItemViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
 
+    @IBOutlet weak var addImageButtopOutlet: UIButton!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var extraInfoTextField: UITextField!
     @IBOutlet weak var priceTextField: UITextField!
@@ -30,9 +31,9 @@ class AddShoppingItemViewController: UIViewController, UINavigationControllerDel
         
         self.quantityTextField.delegate = self
 
-        let image = UIImage(named: "ShoppingCartEmpty")
-        itemImageView.image = maskRoundedImage(image: image!, radius: Float(image!.size.width/2))
-
+        let image = UIImage(named: "ShoppingCartEmpty")!.scaleImageToSize(newSize: itemImageView.frame.size)
+        itemImageView.image = image.circleMasked
+    
         
         if shoppingItem != nil || groceryItem != nil {
             updateUI()
@@ -73,14 +74,24 @@ class AddShoppingItemViewController: UIViewController, UINavigationControllerDel
         optionMenu.addAction(sharePhoto)
         optionMenu.addAction(cancelAction)
         
-        self.present(optionMenu, animated: true, completion: nil)
+        if ( UI_USER_INTERFACE_IDIOM() == .pad )
+        {
+            if let currentPopoverpresentioncontroller = optionMenu.popoverPresentationController{
+                currentPopoverpresentioncontroller.sourceView = addImageButtopOutlet
+                currentPopoverpresentioncontroller.sourceRect = (sender as! UIButton).bounds
+                currentPopoverpresentioncontroller.permittedArrowDirections = .up
+                self.present(optionMenu, animated: true, completion: nil)
+            }
+        }else{
+            self.present(optionMenu, animated: true, completion: nil)
+        }
 
     }
     
     
     @IBAction func saveButtonPressed(_ sender: Any) {
     
-        if nameTextField.text != "" && priceTextField.text != "" {
+        if nameTextField.text != "" && priceTextField.text != "" && quantityTextField.text != "" {
             
             if shoppingItem != nil || groceryItem != nil {
                 
@@ -116,9 +127,12 @@ class AddShoppingItemViewController: UIViewController, UINavigationControllerDel
             self.priceTextField.text = "\(self.shoppingItem!.price)"
             
             if shoppingItem!.image != "" {
+                
                 imageFromData(pictureData: shoppingItem!.image, withBlock: { (image) in
                     
-                    itemImageView.image = maskRoundedImage(image: image!, radius: Float(image!.size.width/2))
+                    self.itemImage = image
+                    let newImage = image!.scaleImageToSize(newSize: itemImageView.frame.size)
+                    self.itemImageView.image = newImage.circleMasked
 
                 })
 
@@ -134,7 +148,8 @@ class AddShoppingItemViewController: UIViewController, UINavigationControllerDel
             if groceryItem!.image != "" {
                 imageFromData(pictureData: groceryItem!.image, withBlock: { (image) in
                     
-                    itemImageView.image = maskRoundedImage(image: image!, radius: Float(image!.size.width/2))
+                    let newImage = image!.scaleImageToSize(newSize: itemImageView.frame.size)
+                    self.itemImageView.image = newImage.circleMasked
                     
                 })
                 
@@ -316,7 +331,9 @@ class AddShoppingItemViewController: UIViewController, UINavigationControllerDel
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         self.itemImage = (info[UIImagePickerControllerEditedImage] as! UIImage)
-        self.itemImageView.image = maskRoundedImage(image: itemImage!, radius: Float(itemImage!.size.width / 2))
+        
+        let newImage = itemImage!.scaleImageToSize(newSize: itemImageView.frame.size)
+        self.itemImageView.image = newImage.circleMasked
         
         picker.dismiss(animated: true, completion: nil)
         

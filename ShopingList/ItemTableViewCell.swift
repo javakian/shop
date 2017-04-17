@@ -48,19 +48,18 @@ class ItemTableViewCell: SwipeTableViewCell {
         if item.image != "" {
             
             imageFromData(pictureData: item.image) { (image) in
-                self.itemImage.image = maskRoundedImage(image: image!, radius: Float(image!.size.width/2))
+                
+                let newImage = image!.scaleImageToSize(newSize: itemImage.frame.size)
+                self.itemImage.image = newImage.circleMasked
+
                 
             }
 
         } else {
-            var image: UIImage!
             
-            if item.isBought {
-                image = UIImage(named: "ShoppingCartFull")
-            } else {
-                image = UIImage(named: "ShoppingCartEmpty")
-            }
-            self.itemImage.image = maskRoundedImage(image: image, radius: Float(image!.size.width/2))
+            let image = UIImage(named: "ShoppingCartEmpty")!.scaleImageToSize(newSize: itemImage.frame.size)
+            self.itemImage.image = image.circleMasked
+                
 
         }
         

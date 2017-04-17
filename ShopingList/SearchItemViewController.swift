@@ -37,6 +37,8 @@ class SearchItemViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()//to change the currency
+        self.tableView.setContentOffset(CGPoint(x: 0.0, y: 44.0), animated: true)
+        
     }
     
     override func viewDidLoad() {

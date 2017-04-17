@@ -12,6 +12,7 @@ import KRProgressHUD
 
 class AllListsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SwipeTableViewCellDelegate {
 
+    @IBOutlet weak var addButtonOutlet: UIBarButtonItem!
     var allLists:[ShoppingList] = []
     
     @IBOutlet weak var tableView: UITableView!
@@ -138,7 +139,6 @@ class AllListsViewController: UIViewController, UITableViewDelegate, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         if segue.identifier == "shoppingListToShoppingItemSeg" {
-            
             
             let indexPath = sender as! IndexPath
             let shoppingList = allLists[indexPath.row]

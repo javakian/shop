@@ -12,6 +12,7 @@ import KRProgressHUD
 
 class ShoppingItemViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SwipeTableViewCellDelegate, SearchItemViewControllerDelegate {
 
+    @IBOutlet weak var addButtonOutlet: UIBarButtonItem!
     var shoppingList: ShoppingList!
     
     var shoppingItems: [ShoppingItem] = []
@@ -92,9 +93,16 @@ class ShoppingItemViewController: UIViewController, UITableViewDelegate, UITable
         
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddItemVC") as! AddShoppingItemViewController
         
+        var item: ShoppingItem!
         
+        if indexPath.section == 0 {
+            item = shoppingItems[indexPath.row]
+        } else {
+            item = boughtItems[indexPath.row]
+        }
+
         vc.shoppingList = shoppingList
-        vc.shoppingItem = self.shoppingItems[indexPath.row]
+        vc.shoppingItem = item
         
         self.present(vc, animated: true, completion: nil)
 
@@ -145,6 +153,7 @@ class ShoppingItemViewController: UIViewController, UITableViewDelegate, UITable
             vc.shoppingList = self.shoppingList
             vc.addingToList = false
             
+            
             self.present(vc, animated: true, completion: nil)
 
         }
@@ -169,7 +178,17 @@ class ShoppingItemViewController: UIViewController, UITableViewDelegate, UITable
         optionMenu.addAction(searchItem)
         optionMenu.addAction(cancelAction)
         
-        self.present(optionMenu, animated: true, completion: nil)        
+        if ( UI_USER_INTERFACE_IDIOM() == .pad )
+        {
+            if let currentPopoverpresentioncontroller = optionMenu.popoverPresentationController{
+                currentPopoverpresentioncontroller.barButtonItem = navigationItem.rightBarButtonItem
+                currentPopoverpresentioncontroller.permittedArrowDirections = .up
+                self.present(optionMenu, animated: true, completion: nil)
+            }
+        }else{
+            self.present(optionMenu, animated: true, completion: nil)
+        }
+
     }
     
     //MARK: Load ShoppingItems
