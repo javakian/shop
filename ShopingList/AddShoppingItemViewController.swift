@@ -91,7 +91,7 @@ class AddShoppingItemViewController: UIViewController, UINavigationControllerDel
     
     @IBAction func saveButtonPressed(_ sender: Any) {
     
-        if nameTextField.text != "" && priceTextField.text != "" && quantityTextField.text != "" {
+        if nameTextField.text != "" && priceTextField.text != ""  {
             
             if shoppingItem != nil || groceryItem != nil {
                 
@@ -131,7 +131,6 @@ class AddShoppingItemViewController: UIViewController, UINavigationControllerDel
                 imageFromData(pictureData: shoppingItem!.image, withBlock: { (image) in
                     
                     self.itemImage = image
-//                    let newImage = image!.scaleImageToSize(newSize: itemImageView.frame.size)
                     self.itemImageView.image = image!.circleMasked
 
                 })
@@ -148,8 +147,8 @@ class AddShoppingItemViewController: UIViewController, UINavigationControllerDel
             if groceryItem!.image != "" {
                 imageFromData(pictureData: groceryItem!.image, withBlock: { (image) in
                     
-                    let newImage = image!.scaleImageToSize(newSize: itemImageView.frame.size)
-                    self.itemImageView.image = newImage.circleMasked
+                    self.itemImage = image
+                    self.itemImageView.image = image!.circleMasked
                     
                 })
                 
@@ -199,11 +198,15 @@ class AddShoppingItemViewController: UIViewController, UINavigationControllerDel
 
         } else {
             
+            var quantity = "1"
+            if quantityTextField.text != "" {
+                quantity = quantityTextField.text!
+            }
+            
             //add to current item, give option to add to list as well?
-            shoppingItem = ShoppingItem(_name: nameTextField.text!, _info: extraInfoTextField.text!, _quantity: quantityTextField.text!, _price: Float(priceTextField.text!)!, _shoppingListId: shoppingList.id)
+            shoppingItem = ShoppingItem(_name: nameTextField.text!, _info: extraInfoTextField.text!, _quantity: quantity, _price: Float(priceTextField.text!)!, _shoppingListId: shoppingList.id)
 
             shoppingItem.image = imageData
-            
             
             shoppingItem.saveItemInBackground(shoppingItem: shoppingItem, completion: { (error) in
                 
@@ -225,14 +228,14 @@ class AddShoppingItemViewController: UIViewController, UINavigationControllerDel
     
     func showListNotification(shoppingItem: ShoppingItem) {
         
-        let alertController = UIAlertController(title: "Shoppig Items", message: "Do you want to add this item to your items?", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Shoppig Items", message: "Do you want to add this item to My Items?", preferredStyle: .alert)
         
         let noAction = UIAlertAction(title: "No", style: .cancel) { (action: UIAlertAction!) in
             
             self.dismiss(animated: true, completion: nil)
         }
         
-        let yesAction = UIAlertAction(title: "Yes", style: .destructive) { (action: UIAlertAction!) in
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { (action: UIAlertAction!) in
             
             let groceryItem = GroceryItem(shoppingItem: shoppingItem)
             

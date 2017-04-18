@@ -150,10 +150,8 @@ class ShoppingItemViewController: UIViewController, UITableViewDelegate, UITable
             
             let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddItemVC") as! AddShoppingItemViewController
             
-            
             vc.shoppingList = self.shoppingList
             vc.addingToList = false
-            
             
             self.present(vc, animated: true, completion: nil)
 
