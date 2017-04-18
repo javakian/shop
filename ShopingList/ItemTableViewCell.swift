@@ -49,8 +49,8 @@ class ItemTableViewCell: SwipeTableViewCell {
             
             imageFromData(pictureData: item.image) { (image) in
                 
-                let newImage = image!.scaleImageToSize(newSize: itemImage.frame.size)
-                self.itemImage.image = newImage.circleMasked
+//                let newImage = image!.scaleImageToSize(newSize: itemImage.frame.size)
+                self.itemImage.image = image!.circleMasked
 
                 
             }

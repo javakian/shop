@@ -131,8 +131,8 @@ class AddShoppingItemViewController: UIViewController, UINavigationControllerDel
                 imageFromData(pictureData: shoppingItem!.image, withBlock: { (image) in
                     
                     self.itemImage = image
-                    let newImage = image!.scaleImageToSize(newSize: itemImageView.frame.size)
-                    self.itemImageView.image = newImage.circleMasked
+//                    let newImage = image!.scaleImageToSize(newSize: itemImageView.frame.size)
+                    self.itemImageView.image = image!.circleMasked
 
                 })
 
@@ -169,7 +169,7 @@ class AddShoppingItemViewController: UIViewController, UINavigationControllerDel
         var imageData: String!
         
         if itemImage != nil {
-            let image = UIImageJPEGRepresentation(itemImage!, 0.5)!
+            let image = UIImageJPEGRepresentation(itemImage!, 0.8)!
             imageData = image.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
         } else {
             imageData = ""
