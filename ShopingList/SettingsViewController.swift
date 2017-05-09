@@ -51,6 +51,8 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     
     @IBAction func signOutButtonPressed(_ sender: Any) {
         
+        cleanupFirebaseObservers()
+        
         FUser.logOutCurrentUser { (success) in
             
             if success {

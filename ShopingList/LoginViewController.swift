@@ -13,7 +13,6 @@ import KRProgressHUD
 
 class LoginViewController: UIViewController {
     
-    var login = true
     
     @IBOutlet weak var loginView: UIView!
     @IBOutlet weak var emailTextField: UITextField!
